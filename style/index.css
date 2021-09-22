@@ -1,0 +1,80 @@
+.menu-container {
+    box-sizing: border-box;
+}        
+.menu-container {
+    margin: 0;
+    display: flex;
+    height: 300px;
+    overflow: hidden;
+    align-items: flex-end;
+    justify-content: center;
+}
+.menu {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    font-size: 25px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+}
+.menu-item {
+    all: unset;
+    flex-grow: 1;
+    z-index: 100;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    border-radius: 50%;
+    align-items: center;
+    will-change: transform;
+    justify-content: center;
+    padding: 12px 0 20px;
+}
+.menu-item::before {
+    content: "";
+    z-index: -1;
+    width: 4.2em;
+    height: 4.2em;
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+    transition: background-color .7s, transform .7s;  
+}
+.menu-item.active {
+    transform: translate3d(0, -.8em , 0);
+}
+
+.icon { 
+    width: 2.6em;
+    height: 2.6em;
+    stroke: white;
+    fill: transparent;
+    stroke-width: 1pt;
+    stroke-miterlimit: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 400;
+}
+.menu-item.active .icon {
+    animation: strok 1.5s reverse;  
+}
+
+.menu-border {
+    left: 0;
+    bottom: 95px;
+    width: 250px;
+    height: 40px;
+    position: absolute;
+    clip-path: url(#menu);
+    will-change: transform;
+    background-color: #000000;
+    transition: transform var(--timeOut , .7s); 
+}
+
+@keyframes strok {
+    100% {
+        stroke-dashoffset: 400;
+    }
+}
